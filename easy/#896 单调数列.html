@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+var isMonotonic = function(A) {
+	let i = 0, l = A.length
+	if(l <= 2) return true
+	if(A[0] < A[l-1]){
+		//增序
+		for(; i < l; i++) {
+    		//出现不同则 return false
+    		if(A[i] > A[i + 1]) return false
+    	}
+	}else{
+		//降序
+		for(; i < l; i++) {
+    		//出现不同则 return false
+    		if(A[i] < A[i + 1]) return false
+    	}
+	}
+	return true
+};	
+/*
+ 优化, j完全没有必要,
+ * */
+var isMonotonicBest = function(A) {
+    
+    if (A.length == 0) return true
+    
+    let increasing = A[0] < A[A.length - 1]
+    
+    for (let i = 1; i < A.length; i ++) {
+        if (A[i] != A[i - 1] && increasing != A[i] > A[i - 1] ) return false
+    }
+    
+    return true
+};
+let a = [3,1,9]
+isMonotonic(a)
+
+/*
+ 评论思路
+ * 主要思路是设置一个"标志值"和一个"等于值"，"标志值"如果后一个大于前一个就加1，后一个大于前一个就减1，等于的话"等于值"就加1
+ * 最后取标志值得绝对值加上等于值和"数组长度-1对比"
+  * 这样子做的目的是如果是递增的就会一直加，递减就一直减，然后"标志值"的绝对值加上"等于值"就等于"数组长度-1对比"
+ * */
+/*
+ 思路二： 比较第一个元素和最后一个元素来判断是升序还是降序。
+ 判断其中的数值是否同样满足这样的趋势
+ * */
+	</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number} N
+ * @return {number}
+ */
+var memo=[0,1];
+var fib = function(n){
+    var result=memo[n];
+    if(typeof result != 'number'){
+      result = fib(n-1) + fib(n-2);
+      memo[n]=result;
+    }
+    return result;
+};
+
+fib(50)
+var fib2 = function(N) {
+//非递归思路 => 直接去用数学计算
+  if (N == 0) return 0
+  if (N == 1) return 1
+  let sum = [0, 1]
+  for (let i = 2; i <= N; i++) {
+    sum[i] = sum[i - 1] + sum[i - 2]
+  }
+  return sum[N]
+};
+	</script>
+</html>

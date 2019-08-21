@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var firstUniqChar = function(s) {
+    //对s进行hash表映射
+    //遍历第一次遇到的字符则 {s[i]: i}保存
+    //重复遇到的之后则更新i=>为后续的遍历跳过做准备
+    //遍历完后再遍历对象返回最小的i?
+    
+    let hash = {},
+    	l = s.length
+    for (let i = 0; i < l; i++) {debugger
+    	if(hash[s[i]] === undefined){
+    		//第一次遍历到的字符
+    		hash[s[i]] = i
+    	}else{
+    		//后续遇到的
+    		hash[s[i]] = l
+    	}
+    }
+    window.hash = hash
+    console.log(hash)
+	return Math.min(...Object.values(hash)) < l ? Math.min(...Object.values(hash)) : -1
+};
+var firstUniqCharIndex = function(s) {
+	//前后各所取一次索引的处理 ..有点意思
+    for(let i=0;i<s.length;i++){
+       if(s.indexOf(s[i])==s.lastIndexOf(s[i])){
+          return i 
+       } 
+    }
+    return -1
+};
+var firstUniqCharBest = function(s) {
+   let firstUniqChar = s.length;
+    let alpha = "abcdefghijklmnopqrstuvwxyz";
+    for (let i = 0; i < alpha.length; i++) {
+        let index = s.indexOf(alpha[i]);
+        if (index != -1 && index == s.lastIndexOf(alpha[i])) {
+            if (index < firstUniqChar) {
+                firstUniqChar = index;
+            }
+        }
+    }
+    return firstUniqChar == s.length ? -1 : firstUniqChar;
+};
+let s = "cc", t = "nagaram"
+firstUniqChar(s,t)
+	</script>
+</html>

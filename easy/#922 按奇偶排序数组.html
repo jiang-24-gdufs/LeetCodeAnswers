@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number[]} A
+ * @return {number[]}
+ */
+var sortArrayByParityII = function(A) {
+    //拆分数组后重新组合
+    let oddA = [],
+    	evenA = []
+    for (let v of A) {
+    	if(v % 2 == 0) {
+    		evenA.push(v) 		
+    	}else{
+    		oddA.push(v)
+    	}   	
+    }
+    console.log(oddA,evenA)
+   	//插入奇数数组的元素
+   	for (let i = 0, j = 1, l = oddA.length; i < l; i++,j+=2) {
+   		evenA.splice(j,0,oddA[i])
+   	}
+   	console.log(evenA)
+};	
+let A = [4,2,5,7]
+sortArrayByParityII(A)
+	</script>
+</html>

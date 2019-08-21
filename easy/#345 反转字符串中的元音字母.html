@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseVowels = function(s) {debugger
+	const o = ['a','o','e','u','i']
+    //思路 -> toArray -> 单次循环 -> 两个游标 -> 不断往中间靠拢, 靠拢过程中遇到 原因则停顿交换 -> 直到相遇 -> toString -> return
+    s = s.split('')
+    for(let i = 0, j = s.length - 1; i < j; ) {
+    	if(o.includes(s[i]) && o.includes(s[j])) {
+    		//switch
+    		let temp = s[j]
+    		s[j] = s[i]
+    		s[i] = temp
+    		continue
+    	}
+    	if(o.includes(s[i])) {
+    		j--
+    	}else{
+    		i++
+    	}
+    }
+    console.log(s)
+};
+/*
+ 
+示例 1:
+输入: "hello"
+输出: "holle"
+
+示例 2:
+输入: "leetcode"
+输出: "leotcede"
+ * */
+debugger
+reverseVowels("hello")
+reverseVowels("leetcode")
+reverseVowels(['a','o','e','u','i'].concat(['a','o','e','u','i']).toString())
+	</script>
+</html>
+

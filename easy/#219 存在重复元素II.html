@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/*想法是遍历每一个数组元素, 看与后面的每一位的差值的绝对值*/
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {boolean}
+ */
+var containsNearbyDuplicate = function(nums, k) {
+	let j,
+		i = 0,
+		l = nums.length
+	for (; i < l; i++) {
+		for (j = i + 1; j < l; j++) {debugger
+			if (nums[i] === nums[j] && Math.abs(i - j) === k) {
+				return true
+			}
+		}
+	}
+	return false
+};	
+let val = [1,2,3,1]
+containsNearbyDuplicate(val, 3)
+	</script>
+</html>

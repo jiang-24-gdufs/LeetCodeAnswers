@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		想法是找到 出现次数最多的值, 作为两端, 获取这个子数组-> 长度
+			==> 长度直接为两个索引做差 + 1
+		做缓存: 
+		{
+			v: [index, ]
+		}
+		遍历取数组最长的v => 数组的last-0 + 1
+		
+	</body>
+	
+<script type="text/javascript">
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findShortestSubArray = function(nums) {
+    let i = 0, l = nums.length,
+    	cache = {}, res = [],
+    	temp = []
+	for(; i < l; i++) {
+		if(!cache[nums[i]]){		
+			cache[nums[i]] = []
+			cache[nums[i]].push(i)
+		}else{
+			cache[nums[i]].push(i)
+		}
+	}
+	console.log(cache)
+    for (let k in cache) {
+		let l = cache[k].length 
+		if(l > 1) {		
+			if(!res[l]){
+				res[l] = cache[k][l - 1] - cache[k][0]
+			}else if(res[l] && (cache[k][l - 1] - cache[k][0] < res[l])) {
+				res[l] = cache[k][l - 1] - cache[k][0]
+			}
+		}
+    }
+	return res[res.length - 1]
+};	
+let val = [1,2,2,3,1,4,5]
+findShortestSubArray(val)
+</script>
+</html>

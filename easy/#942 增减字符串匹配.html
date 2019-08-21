@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+<script type="text/javascript">
+/**
+ * @param {string} S
+ * @return {number[]}
+ */
+var diStringMatch = function(S) {
+    let min = 0, l = max = S.length, res = []
+    if (l === 0) return res;
+
+    for (let i = 0; i <= l; i++) {debugger
+    	if(S[i] == "I"){
+    		res.push(min++)
+    	}else if(S[i] == "D"){
+    		res.push(max--)   		
+    	}
+    }
+    res.push(min)
+    console.log(res)
+    return res
+};	
+diStringMatch("DDD")
+</script>
+</html>

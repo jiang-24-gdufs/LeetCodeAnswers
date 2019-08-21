@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+/**
+ * @param {number[]} arr1
+ * @param {number[]} arr2
+ * @return {number[]}
+ */
+var relativeSortArray = function(arr1, arr2) {
+    // 遍历arr1,非首次遍历到的数字, 插入到arr2中
+    const ans = [].concat(arr2)
+    const tail = []
+    const hash = {}
+    for(ele of arr1) {
+    	const index = arr2.indexOf(ele) 
+    	if(index > -1) {
+    		if(ele in hash){
+    			ans.splice(index, 0, ele)
+    		}else{
+    			hash[ele] = 1
+    		}
+    	}else{
+    		tail.push(ele)
+    	}
+    }
+//  tail.sort((a,b)=>a-b)
+//  return ans.concat(tail)
+    //等价于
+    return [...ans, ...tail.sort((a,b)=>a-b)]
+};	
+
+/*使用reduce方法改写*/
+var relativeSortArray = function(arr1, arr2) {
+    // 遍历arr1,非首次遍历到的数字, 插入到arr2中
+    const tail = []
+    const hash = {}
+    const ans = arr1.reduce((firstV, secondV)=>{
+    	const index = firstV.indexOf(secondV)
+    	if(index > -1) {
+    		if(secondV in hash){
+    			arr2.splice(index, 0, secondV)
+    		}else{
+    			hash[secondV] = 1
+    		}
+    	}else{
+    		tail.push(secondV)
+    	}
+    	return arr2
+    },arr2)
+    return [...ans, ...tail.sort((a,b)=>a-b)]
+} 
+
+const arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6]
+relativeSortArray(arr1, arr2)
+</script>

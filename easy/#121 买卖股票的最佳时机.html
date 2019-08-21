@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {debugger
+    let min = Math.min(...prices),
+        minI = prices.indexOf(min),
+        l = prices.length,
+        max = 0
+
+    for (let i = minI + 1; i < l; i++) {debugger
+        max = prices[i] - min > max ? prices[i] - min : max
+    }
+    return max
+    //这种思路问题在于只考虑了最低谷和其后的差值
+};
+var maxProfit2 = function (prices) {debugger
+	//暴力法
+	let i = 0, l = prices.length,
+		max = 0, j
+	for(;i < l; i++) {
+		for(j = i + 1; j < l; j++) {
+			if(prices[j] - prices[i] > max) max = prices[j] - prices[i]
+		}
+	}
+	return max
+}
+maxProfit([7,1,5,3,6,4])
+maxProfit2([7,1,5,3,6,4])
+	</script>
+</html>

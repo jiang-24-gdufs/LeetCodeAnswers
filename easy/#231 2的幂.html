@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isPowerOfTwo = function(n) {
+	//
+};
+let isPowerOfTwoBest = function(n) {
+	/*
+	 * 如果是2的幂次方，必为10，100，1000，10000，100000, etc...形式。
+     * 所有，n & n-1 == 0 恒成立。（n-1形如01,011,0111,0111, etc..
+     * */
+    return n > 0 && !(n & (n - 1));
+    //与运算 n -1
+};
+//抄的
+isPowerOfTwoXX = n => /^10*$/.test(n.toString(2))
+
+
+isPowerOfTwo(1)
+isPowerOfTwo(2)
+isPowerOfTwo(16)
+isPowerOfTwo(218)
+	</script>
+</html>

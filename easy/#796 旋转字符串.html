@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//考虑使用一个 n 循环
+/**
+ * @param {string} A
+ * @param {string} B
+ * @return {boolean}
+ */
+var rotateString = function(A, B) {
+    while(A.length --) {debugger
+    	if(A === B){
+    		return true
+    	} else{
+    		A = A.slice(1) + A[0]
+    	}
+    }
+    return false
+};		
+let A = 'abcde', B = 'cdeab'
+rotateString(A, B)
+	</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number[]} A
+ * @param {number[][]} queries
+ * @return {number[]}
+ */
+var sumEvenAfterQueries = function(A, queries) {
+    //思路是遍历每一个个体然后做计算
+    let i = 0, l = queries.length, j = 0, n = A.length,
+    	val, index, sum,answer = []
+    for(; i < l; i++) {debugger
+    	sum = 0
+    	val = queries[i][0]
+    	index = queries[i][1]
+    	A[index] += val
+  
+    	A.forEach(function (v,i,arr) {
+    		sum += v % 2 === 0 ? v : 0
+    	})
+    	answer.push(sum)
+    }
+    console.log(answer)
+    return answer
+};
+let A = [1,2,3,4],
+	Q = [[1,0],[-3,1],[-4,0],[2,3]]
+sumEvenAfterQueries(A,Q)
+	</script>
+	
+</html>

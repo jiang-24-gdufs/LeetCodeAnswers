@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+	/**
+	 * @param {number} numRows
+	 * @return {number[][]}
+	 */
+//	var generate = function(numRows) { [问题 0 / 1 有默认输出]
+//	    let trai = [[1],[1,1]]
+//	        temp = [],
+//	        i = 2
+//	    for(; i < numRows; i++){debugger
+//	    	trai[i] = []
+//	    	trai[i][0] = 1
+//	    	trai[i][i] = 1
+//	        for(j = 1; j < i; j++){debugger
+//	        	trai[i][j] = trai[i-1][j-1] + trai[i-1][j]
+//	        	console.log(trai[i][j])
+//	        }
+//	    }
+//	    console.log(trai)     
+//	};
+	var generate = function(numRows) {
+	    let trai = []
+	    if(numRows === 0) {
+	    	debugger
+	    	return []
+	    }
+	    for(let i = 0; i < numRows; i++){debugger
+	    	trai[i] = []
+	    	trai[i][0] = 1
+	    	trai[i][i] = 1
+	        for(j = 1; j < i; j++){debugger
+	        	trai[i][j] = trai[i-1][j-1] + trai[i-1][j]
+	        	console.log(trai[i][j])
+	        }
+	    }
+	    console.log(trai)     
+	};	
+	generate(0)
+	</script>
+</html>

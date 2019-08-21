@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var sumOfLeftLeaves = function(root) {
+    var sum = 0
+    if(root === null || root.left === null){
+    	return 0
+    } else {
+    	sum += root.left.val
+    }
+    sum+=sumOfLeftLeaves(root.left)
+    sum+=sumOfLeftLeaves(root.right)
+    return sum
+    
+};
+	</script>
+</html>

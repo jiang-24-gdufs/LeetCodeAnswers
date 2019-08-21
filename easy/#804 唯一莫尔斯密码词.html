@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {string[]} words
+ * @return {number}
+ */
+var uniqueMorseRepresentations = function(words) {
+    let code = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."],
+        str = {
+            a:code[0]
+            ,b:code[1]
+            ,c:code[2]
+            ,d:code[3]
+            ,e:code[4]
+            ,f:code[5]
+            ,g:code[6]
+            ,h:code[7]
+            ,i:code[8]
+            ,j:code[9]
+            ,k:code[10]
+            ,l:code[11]
+            ,m:code[12]
+            ,n:code[13]
+            ,o:code[14]
+            ,p:code[15]
+            ,q:code[16]
+            ,r:code[17]
+            ,s:code[18]
+            ,t:code[19]
+            ,u:code[20]
+            ,v:code[21]
+            ,w:code[22]
+            ,x:code[23]
+            ,y:code[24]
+            ,z:code[25]
+        },
+        output = '',
+        outPutArr = [],
+        i = j = 0,
+        l = words.length,	//单次个数
+        wl,					//缓存单词个体长度
+        word				//缓存单词个体
+    //遍历字符串每一个字符对应一个code
+    for(; i < l; i++) {
+    	word  = words[i]
+    	wl = word.length
+    	for(; j < wl; j++){
+    		
+    		output += str[word[j]]
+    		console.log(output)
+    	}
+    	outPutArr.indexOf(output) > -1 ? null : outPutArr.push(output)
+    	debugger
+    	//执行完一轮重置循环变量
+    	j = 0
+    	output = ''
+	    
+	};
+	console.log(outPutArr.length)
+	return outPutArr.length
+}
+
+
+
+
+
+
+let uniqueMorseRepresentationsBest = function (words) {
+            let codeTable = {
+                a: ".-",
+                b: "-...",
+                c: "-.-.",
+                d: "-..",
+                e: ".",
+                f: "..-.",
+                g: "--.",
+                h: "....",
+                i: "..",
+                j: ".---",
+                k: "-.-",
+                l: ".-..",
+                m: "--",
+                n: "-.",
+                o: "---",
+                p: ".--.",
+                q: "--.-",
+                r: ".-.",
+                s: "...",
+                t: "-",
+                u: "..-",
+                v: "...-",
+                w: ".--",
+                x: "-..-",
+                y: "-.--",
+                z: "--.."
+            };
+
+            let resultObj = {
+                length : 0
+            };		//使用对象来判断 重复和 记录长度
+            for (let i = 0, len = words.length; i < len; i += 1) {	//正常来说还是双重循环
+                let str = words[i],
+                    tmpCode = "";
+                for (let j = 0, strLen = str.length; j < strLen; j++) {
+                    tmpCode += codeTable[str[j]];
+                }
+                if (!(tmpCode in resultObj)) {	//判断是否重复, 不重复就操作
+                    resultObj[tmpCode] = 1;
+                    resultObj.length++;
+                }
+            }
+            return resultObj.length;
+        };
+let words = ["gin", "zen", "gig", "msg"]
+uniqueMorseRepresentations(words)
+	</script>
+</html>

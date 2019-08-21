@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+	/**
+	 * @param {string} haystack
+	 * @param {string} needle
+	 * @return {number}
+	 */	
+var getRow = function(rowIndex) {
+	    let arr = [[1]];
+	    for (let i = 1; i <= rowIndex; ++i) {
+	        let row = [1];
+	        for (let j = 1; j < arr[i - 1].length; ++j) {
+	            row.push(arr[i - 1][j - 1] + arr[i - 1][j])
+	        }
+	        row.push(1);
+	        arr.push(row);
+	    }
+	    debugger
+	    console.log(arr[rowIndex])
+	    return arr[rowIndex];    
+};
+getRow(0)
+	</script>
+</html>

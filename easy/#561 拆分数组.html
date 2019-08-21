@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var arrayPairSum = function(nums) {
+    
+	//做加法的元素 一定要有一个比该元素碰巧大一点点的元素, 
+	//递增排序后取 奇数位的元素的和
+	let i = 0,
+		l = nums.length,
+		sum = 0
+	nums.sort( (a,b)=>a-b )
+	for (; i < l; i+=2) {debugger
+		sum += nums[i]
+	}
+
+	return sum
+};
+let val = [1,2,3,2]
+arrayPairSum(val)
+	</script>
+</html>

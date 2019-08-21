@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+<script type="text/javascript">
+/**
+ * @param {number[]} bills
+ * @return {boolean}
+ */
+var lemonadeChange = function(bills) {
+	// 5 => 不用找零
+	// 10 => 找一张 5
+	// 20 => 15 => 10 + 5 / 5 * 3
+	// 找零的时候必要要用到5, 所以5的重要性, 更大, 20的时候优先找10
+	// 20的会一直在手中 (找零用不到所以这个就没有什么保留的意义)
+	const dollors = {5: 0, 10: 0, 20: 0}
+	
+	for (let bill of bills) {
+		//5 
+		if (bill === 5) {
+			dollors[5]++
+			
+		} else if(bill === 10){
+			if (dollors[5] > 0) {
+				dollors[5]--
+				dollors[10]++
+			}else{
+				return false;
+			}
+		} else if(bill === 20){
+			if (dollors[10] > 0 && dollors[5] > 0) {
+				dollors[5]--
+				dollors[10]--
+				dollors[20] ++
+			} else if(dollors[10] === 0 && dollors[5] > 3){
+				dollors[5] -= 3
+				dollors[20] ++
+			} else {
+				return false;
+			}
+		}
+	}
+	return true;
+};		
+/*优化一下*/
+var lemonadeChange = function(bills) {
+	let five = ten = 0
+	for (let bill of bills) {
+		if (bill == 5) {
+			five++
+		} else if(bill == 10){
+			five--
+			ten++
+			
+		} else {
+			if (ten > 0) {
+				ten--
+				five--
+				
+			} else{
+				five -=3
+			}
+		}
+		if (five < 0) {
+			return false 
+		}
+	}
+	return true
+}
+let val = [5,5,5,10,20]
+lemonadeChange(val)
+</script>
+</html>

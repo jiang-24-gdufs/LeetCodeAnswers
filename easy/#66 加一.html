@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+	var plusOne = function(digits) {
+	    let pop = digits.pop()
+	    if(pop !== 9) {      
+	        digits.push(pop + 1)
+	    }else{debugger
+	        //如果是9+1需要进位的情况和补零
+	        if(digits.length === 0) {
+	            //单有9,前面需要额外增一位的
+	            digits.push(1,0)
+	        }else{ 
+	            plusOne(digits)
+	        	digits.push(0)
+	        }
+	    }
+	    console.log(digits)
+	    return digits
+	};
+	let val = [9,9,9,9,9]
+	plusOne(val)
+	</script>
+</html>

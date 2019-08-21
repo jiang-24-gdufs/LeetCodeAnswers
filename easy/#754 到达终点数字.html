@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		从1到N一直累加, 直到SUM==TARGET, 或SUM减TARGET为正偶数. 因为在第n步往回走一次,SUM就会减少2n, 所以他们的差必须是偶数才能到.
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number} target
+ * @return {number}
+ */
+/* 1 累加 到N 直到( sum - targe) % 2 === 0*/
+var reachNumber = function(target) {
+	let sum = 0, i = 1
+	debugger
+	if(target >= 0) {	
+		for(; sum < target || (sum - target) % 2 !== 0; i++) {
+			sum+=i
+		}
+	}else{		
+		/* 负数 */
+		for(; sum > target || (sum - target) % 2 !== 0; i++) {
+			sum-=i
+		}
+	}
+	console.log(sum)
+	return i - 1
+};
+let target = 2 
+reachNumber(target)
+/*优化思路
+ 1. 在坐标轴上左右对称 正负不影响结果 所以取下绝对值就好了
+ * */
+
+	</script>
+</html>

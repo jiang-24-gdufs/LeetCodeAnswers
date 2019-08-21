@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		/**
+		 * @param {number[]} nums
+		 * @param {number} target
+		 * @return {number[]}
+		 */
+		var searchRange = function(nums, target) {
+		    let res = []
+		    for(let [k,v] of nums.entries()) {
+		    	if(v === target) {
+		    		res.push(k)
+		    	}
+		    }
+		    if(res.length === 0) {
+//				debugger		    	
+		    	return [-1,-1]
+		    }
+		    //console.log( res[0],res.pop() )
+		    return [res[0],res.pop()]
+		    
+		};	
+		
+		var searchRangeEasiest = function(nums, target) {
+		    return [nums.indexOf(target), nums.lastIndexOf(target)];
+		};
+	</script>
+</html>

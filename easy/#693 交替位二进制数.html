@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+/* 0B0			- 0
+ * 0B1 			- 1
+ * 0B10 		- 2
+ * 0B101		- 5
+ * OB1010		- 10
+ * OB10101		- 21
+ */
+var hasAlternatingBits = function(n) {
+	let nums = [0]
+    for (let i = 1; i < 50; i++) {
+    	if(i % 2 == 0) {
+    		nums.push(nums[i-1]*2)
+    	}else {
+    		nums.push(nums[i-1]*2+1)
+    	}
+    }
+   	return nums.indexOf(n) > -1
+};
+var hasAlternatingBitsBest = function(n) {
+  let f = n >> 1;
+  return !((n ^ f) & ((n ^ f) + 1));
+};
+hasAlternatingBits()
+	</script>
+</html>

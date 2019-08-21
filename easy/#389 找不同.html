@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {character}
+ */
+var findTheDifference = function(s, t) {
+	//提交后发现这个是最慢的方法, 三次遍历啊
+    s = s.split('').sort()
+    t = t.split('').sort()
+    let a = [...s].sort()//字符串=>数组的优化
+    let b = [...t].sort()
+    for(let i = 0, l = t.length; i < l; i++) {
+        if( t[i] !== s[i])  return t[i]
+    }
+};
+let findTheDifferenceBEst = function(s, t) {
+    let code = 0;    
+    for (let c of s + t) {
+        code ^= c.charCodeAt(0);
+        // ^ 是异或运算符
+        // 1 ^ 3 ^ 3
+   		/*
+   		 01
+   		^11
+   		=10
+   		^11
+   		=01 ===> 因为正好只有一个
+   		 
+   		 
+   		 * */
+    }
+    return String.fromCharCode(code);
+};
+let s = "anagram", t = "nagaram"
+isAnagram(s,t)
+	</script>
+</html>

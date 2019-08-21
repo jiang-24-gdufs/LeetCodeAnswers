@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number[]} A
+ * @return {number}
+ */
+var repeatedNTimes = function(A) {
+    let temp = {}
+    for(let v of A) {
+        if(temp[v]) {
+            temp[v] += 1
+            debugger
+            if(temp[v] === 2) return v 
+        } else{
+            temp[v] = 1
+        }
+    }
+};
+let A = [1,2,3,3]
+repeatedNTimes(A)
+A = [2,1,2,5,3,2]
+repeatedNTimes(A)
+A = [5,1,5,2,5,3,5,4]
+repeatedNTimes(A)
+	</script>
+</html>

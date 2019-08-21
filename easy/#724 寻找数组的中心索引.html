@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		中心索引的：数组中心索引的左侧所有元素相加的和等于右侧所有元素相加的和。
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var pivotIndex = function(nums) {
+    /*暴力查找
+    	对每一个数组成员都对左右做和
+    * */
+   	let i = 0, l = nums.length,
+   		left, right
+   	if(l <= 2) return -1 
+   	for (; i < l; i++) {debugger
+   		left = nums.slice(0,i)
+   		right = nums.slice(i+1)
+   		if(add(...left) === add(...right)) return i
+   	}
+    return -1 
+};		
+function add() {
+	let sum = 0
+	for (var i = 0; i < arguments.length; i++) {
+		sum += arguments[i]
+	}
+	console.log(sum)
+	return sum
+}
+
+/*
+ * 另一种思路是动态的变化两边 的和
+ * [1,2,3,4,5]
+ * 遍历的时候指针i从0-1的时候
+ * 左侧的和 +1
+ * 右侧的和 -2 
+ * 对应索引就是 +nums[i-1]	-nums[i]
+ * 				
+ */
+
+//add(...[1,2,3,4,5])
+let nums = [1, 2,3]
+pivotIndex(nums)
+	</script>
+</html>

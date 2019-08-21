@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number[][]} matrix
+ * @return {boolean}
+ */
+var isToeplitzMatrix = function(matrix) {
+	//看评论是 ij循环遍历, 比较该元素和其左上角是否相等
+    
+    let M = matrix.length, 	//行数
+    	N = matrix[0].length,	
+    	i = 1,
+    	j = 1 
+    
+	if(M <= 1 || N <= 1) return true
+	for (; i < M ; i++) {
+		for(; j < N; j++) {
+			
+			if (matrix[i][j] !== matrix[i-1][j-1]) {debugger
+				return false
+			}
+		}
+		j = 1 
+	}
+	debugger
+	return true
+    
+
+  
+};
+let val = [[53,64,90,98,34],[91,53,64,90,98],[17,91,53,64,0]]
+isToeplitzMatrix(val)
+	</script>
+</html>

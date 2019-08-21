@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+<script type="text/javascript">
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var dominantIndex = function(nums) {
+	if(nums.length == 0) return -1
+	if(nums.length == 1) return 0
+    let copySorted = [].concat(nums).sort((a,b)=>b-a)
+//  console.log(nums, copySorted)
+	if(copySorted[0] >= copySorted[1] * 2) {
+		return nums.indexOf(copySorted[0])
+	}else{
+		return -1
+	}
+};	
+
+
+var dominantIndexBest = function(nums) {
+    var max =-Infinity
+    for(i=0;i<nums.length;i++){
+        max = max>nums[i]?max:nums[i]	//记录max
+    }
+    var x = 0
+    for(i=0;i<nums.length;i++){
+        if(nums[i]==max){
+            x = i						//记录索引 & 清除max
+            nums.splice(i,1)
+        }
+    }
+    for(i=0;i<nums.length;i++){
+        if(max>=nums[i]*2){				//遍历比对取结果
+            continue
+        } else {
+            return -1
+        }
+    }
+    return x
+};
+
+var dominantIndexBest2 = function(nums) {
+  const max =  Math.max(...nums);
+  let index = -1;
+  for(let i = 0; i < nums.length; i++) {
+    if (nums[i] === max) {
+      index = i;
+      continue;
+    }
+    if(nums[i] * 2 > max) {
+      return -1;  
+    }
+  }
+  return index;
+};
+let nums = [3, 6, 1, 0]
+dominantIndex(nums)
+</script>
+</html>

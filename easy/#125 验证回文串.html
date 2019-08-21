@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+<script type="text/javascript">
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+/*
+ 执行结果：通过显示详情
+执行用时 :76 ms, 在所有 JavaScript 提交中击败了99.80%的用户
+内存消耗 :37.4 MB, 在所有 JavaScript 提交中击败了70.96%的用户
+ * */
+var isPalindrome = function(s) {
+    //思路是正则匹配 删除非数字非字母的符号 toUpperCase()
+    //1**字符串拆分为两段,(拆分两段是不需要的,整个字符串逆序), 逆序比对..... 这个处理逻辑有点复杂
+    //2**遍历双指针循环
+    const reg = /[^a-zA-Z0-9]/g
+    s = s.replace(reg, '').toUpperCase().split('')
+    for(let i = 0, j = s.length - 1; j > i; i++,j--) {
+    	if(s[i] !== s[j]) return false
+    }
+    return true
+};
+isPalindrome("A man, a plan, a canal: Panama")
+</script>
+</html>

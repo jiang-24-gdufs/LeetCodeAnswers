@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseWords = function(s) {
+    /*思路是以空格切割, 每个转为数组后逆序再转回来, 再拼上空格*/
+   	let temp = s.split(' '),
+   		i = 0, l = temp.length,
+   		res = []
+	for (; i < l; i++) {
+		let t = temp[i].split('').reverse().join('')
+		console.log(t)
+		res.push(t)
+	}
+	return t.join(' ')
+};		
+let s ="Let's take LeetCode contest"
+reverseWords(s)
+/*思路是以空格为界, 对每一个单次都从后往前遍历添加进入数组*/
+var reverseWordsBest = function(s) {
+    let words = s.split(' ');
+    
+    let newWords = []
+    words.forEach((word) => {
+        let str = '';
+        for (let i=word.length-1; i>=0; --i) {
+            str += word[i];
+        }
+        newWords.push(str);
+    });
+    
+    return newWords.join(' ');
+};
+	</script>
+</html>

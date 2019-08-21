@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+/**
+ * @param {number[]} g
+ * @param {number[]} s
+ * @return {number}
+ */
+var findContentChildren = function(g, s) {
+    //排序
+    g = g.sort((a,b)=>a-b)
+    s = s.sort((a,b)=>a-b)
+//  console.log(g,s)
+	let gi = 0, si = 0, m = 0,
+		gl = g.length, sl = s.length
+	while(gi < gl && si < sl) {
+		if(s[si]>=g[gi]) {
+			m += 1
+			si += 1
+			gi += 1
+		}else{
+			//饼干加一
+			si += 1
+		}
+	}
+};
+let val =  [1,2,2,5,3,1], 
+	s = [1,1,2,3,4,5,6]
+findContentChildren(val,s)
+	</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+var judgeCircle = function(moves) {
+    //计算UD RL的个数是否两两相等
+    //遍历个数
+    //
+    moves = moves.split('')
+    let y = 0, x = 0
+    for (let v of moves) {
+    	switch(v) {
+    		case 'L':
+    			x--
+    		break;
+    		case 'R':
+    			x++
+    		break;
+    		case 'U':
+    			y++
+    		break;
+    		case 'D':
+    			y--
+    		break;
+    	}
+    	
+    }
+    return ( y== 0 && x === 0 )
+    
+};
+	</script>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+/**
+ * @param {number} k
+ * @param {number[]} nums
+ */
+/*  思路是缓存第k大的值, 然后判断add的值是
+ 	1. v<= 不会改变第K大的值
+ 	2. v>  会改变， 排序 *(仅排序左侧可以实现吗 ==> 与右侧合并), 替换缓存kMax,return
+ * */
+var KthLargest = function(k, nums) {
+    this.k = k
+    this.arr = nums.sort((a,b)=>b-a)
+    this.kMax = this.arr[k-1]
+};
+
+/** 
+ * @param {number} val
+ * @return {number}
+ */
+KthLargest.prototype.add = function(val) {
+	if(val <= this.kMax) {
+		this.arr.push(val) //只需要添加到最后	
+		return this.kMax
+	}else{debugger
+		/*插入到左侧 & 排序*/
+		this.arr.splice(this.k-1,0,val)
+		let t = this.arr.slice(0,this.k).sort((a,b)=>b-a)
+		this.arr = t.concat(this.arr.slice(this.k))
+		return this.kMax = this.arr[this.k-1]	
+	}
+};
+
+/** 
+ * Your KthLargest object will be instantiated and called as such:
+ * var obj = Object.create(KthLargest).createNew(k, nums)
+ * var param_1 = obj.add(val)
+ */	
+ 
+let k = 3;
+let arr = [4,5,8,2];
+let kthLargest = new KthLargest(3, arr);
+kthLargest.add(3);   // returns 4
+kthLargest.add(5);   // returns 5
+kthLargest.add(10);  // returns 5
+kthLargest.add(9);   // returns 8
+kthLargest.add(4);   // returns 8
+</script>
+<script type="text/template" id="best">
+/**
+ * @param {number} k
+ * @param {number[]} nums
+ */
+var KthLargest = function(k, nums) {
+  this.k = k - 1;
+  this.arr = nums.sort((a, b) => b - a);
+};
+
+/**
+ * @param {number} val
+ * @return {number}
+ */
+KthLargest.prototype.add = function(val) {
+  if (val < this.arr[this.arr.length - 1] || this.arr.length === 0) {
+    this.arr.push(val);
+  } else if (val > this.arr[0]) {
+    this.arr.unshift(val)
+  } else {
+    let left = 0;
+    let right = this.arr.length - 1;
+    while (left <= right) {
+      const mid = ~~((left + right) / 2);
+      const item = this.arr[mid];
+      if (item === val) {
+        this.arr.splice(mid, 0, val);
+        break;
+      } else if (val > item && val <= this.arr[mid - 1]) {
+        this.arr.splice(mid, 0, val);
+        break;
+      } else if (val < item && val >= this.arr[mid + 1]) {
+        this.arr.splice(mid + 1, 0, val);
+        break;
+      } else if (val > item) {
+        right = mid
+      } else {
+        left = mid;
+      }
+    }
+  }
+  return this.arr[this.k];
+};
+	
+</script>
+

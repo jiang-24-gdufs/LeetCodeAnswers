@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+	/**
+	 * @param {number[]} nums
+	 * @param {number} target
+	 * @return {number[]}
+	 */
+	var twoSum = function(nums, target) {
+		// 暴力破解法
+	    for(let i = 0, l = nums.length; i < l; i++) {
+	    	for(let j = 0; j < l, j !== i; j++) {
+	    		if (nums[i] + nums[j] === target) {debugger
+	    			return [i,j]
+	    		}
+	    	}
+	    }
+	};		
+	var twoSumHash = function(nums, target) {
+		// hash表遍历一次
+	    let hashMap = {}
+	    for (var i = 0; i < nums.length;i++ ) {
+	      if (hashMap[target - nums[i]] >= 0) {
+	          return [i, hashMap[target - nums[i]]]
+	      }
+	      hashMap[nums[i]] = i
+	    }
+	};		
+		
+		let val = [3,2,4]
+			twoSum(val,6)
+	</script>
+</html>

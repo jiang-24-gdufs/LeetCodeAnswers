@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isAnagram = function(s, t) {
+    s = s.split('').sort())
+    t = t.split('').sort())
+    l = s.length > t.length ? s.length : t.length 
+    for(let i = 0; i < l; i++) {
+    	if(s[i] !== t[i]) return false 
+    }
+    return true
+};
+var isAnagramLikely = function(s, t) {
+    s=s.split('').sort().join('');
+    //console.log(s);
+    t=t.split('').sort().join('');
+    //console.log(t);
+    return s===t;
+};
+var isAnagramBest = function(s, t) {
+    var len=s.length
+    for(var i=0;i<len;i++){
+        if(s==t || s.length!=t.length) break;
+        t=t.replace(new RegExp(s[0],'g'),"");        
+        s=s.replace(new RegExp(s[0],'g'),"");
+    }
+    return s==t? true:false;
+};
+let s = "anagram", t = "nagaram"
+isAnagram(s,t)
+	</script>
+</html>

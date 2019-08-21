@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var thirdMax = function(nums) {
+    nums = Array.from(new Set(nums))
+    nums.sort((a,b)=>b-a)
+    debugger
+    return nums[2] === undefined ? nums[0] : nums[2]
+//  (或运算符可能会受到 0 的影响)
+};
+let thirdMaxBest = function(nums) {//遍历找最大
+    let arr = new Array(3);
+    for (let num of nums) {
+        if (!arr.includes(num)) {
+            if (arr[0] === undefined || num > arr[0]) {
+                [arr[2], arr[1], arr[0]] = [arr[1], arr[0], num];
+            } else if (arr[1] === undefined || num > arr[1]) {
+                [arr[2], arr[1]] = [arr[1], num];
+            } else if (arr[2] === undefined || num > arr[2]) {
+                arr[2] = num;
+            }
+        }
+    }
+    return arr[2] === undefined ? arr[0] : arr[2];
+};
+let val = [3,3,4,3,4,3,0,3,3]
+thirdMax(val)
+	</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+TreeNode {
+  	val: 3,
+  	right: {	//TreeNode 
+     	val: 20,
+     	right: TreeNode { val: 7, right: [Object], left: [Object] },
+     	left: TreeNode { val: 15, right: [Object], left: [Object] } },
+  	left: {
+     	val: 9,
+     	right: TreeNode { val: 56, right: [Object], left: [Object] },
+     	left: TreeNode { val: 23, right: [Object], left: [Object] } } 
+}
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isUnivalTree = function(root) {
+    if(root===null) return true
+    if(root.left !== null && root.left.val !== root.val){
+    	return false 
+    }
+    if(root.right !== null && root.right.val !== root.val) {
+    	return false 
+    }
+    return isUnivalTree(root.left) && isUnivalTree(root.right)
+};
+	</script>
+</html>

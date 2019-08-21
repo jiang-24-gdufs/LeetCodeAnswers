@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var findNthDigit = function(n) {
+    let str = []
+    for(let i = 1; i <= n; i++) {
+    	str.push(i)
+    }
+    str.join('')
+    console.log(str[n-1])
+};		
+findNthDigit(3)
+	</script>
+</html>

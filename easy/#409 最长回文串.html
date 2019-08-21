@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {string} s
+ * @return {number}
+ */
+/*
+ 参考评论的思路
+ * 字母ASCII码A~Za~z区间为（65～122）为此，可以使用128的数组标记每个字母出现的次数。
+字母出现一次则对应位置记为1，出现两次记为0（同时length统计该字母出现了2次）。
+如果所有成对出现的字母数量，小于字符串总长度，则必存在一个以上的奇数次出现的字母。
+ * 
+ * */
+var longestPalindrome = function(s) {
+	let lHashMap = { a:0, b:0, c:0, d:0, e:0, f:0, g:0, h:0, i:0, j:0, k:0, l:0, m:0, n:0, o:0, p:0, q:0, r:0, s:0, t:0, u:0, v:0, w:0, x:0, y:0, z:0, A:0, B:0, C:0, D:0, E:0, F:0, G:0, H:0, I:0, J:0, K:0, L:0, M:0, N:0, O:0, P:0, Q:0, R:0, S:0, T:0, U:0, V:0, W:0, X:0, Y:0, Z:0 }
+	let i = 0, l = s.length, 
+		odd = null, ret = 0
+	if(l===0) return ret 
+	for (; i < l; i++) {
+		lHashMap[s[i]]++
+	}
+	console.log(lHashMap)
+	for (let k in lHashMap) {
+		if(lHashMap[k] % 2 === 0) {
+			ret += lHashMap[k]
+		}else {
+			//奇数取其值减一
+			ret += lHashMap[k] - 1
+			odd = true 
+		}
+	}
+	return odd ? ret + 1 : ret  
+};
+/*
+ 看评论优化 
+ 
+ *
+ * 1. 没必要手动建设hashMap, 动态建设就好了
+ * 2.
+ * */
+let v = "abccccddASDFASDFrrrfwewefqwefqwefqwfew"
+
+longestPalindrome(v)
+
+let longestPalindromeBest = function(s) {
+    let arr = new Array(58).fill(0);
+    let res = 0;
+    for (let i = 0; i < s.length; ++i) {
+        arr[s.charCodeAt(i) - 65]++;
+    }
+    for (let num of arr) {
+        res += (num >> 1) * 2;
+    }
+    return res === s.length ? res : res + 1;
+};
+	</script>
+	
+</html>

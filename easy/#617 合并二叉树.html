@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+	
+/**
+ *  * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ * 
+ * @param {TreeNode} t1
+ * @param {TreeNode} t2
+ * @return {TreeNode}
+ */
+var mergeTrees = function(t1, t2) {
+    if(t1 == null) {
+        return t2
+    }
+    if(t2 == null) {
+        return t1
+    }
+    t1.val += t2.val
+    t1.left = mergeTrees (t1.left, t2.left)
+    t1.right = mergeTrees (t1.right, t2.right)
+    return t1
+};
+
+var mergeTreesBest = function(t1, t2) {
+   var t 
+    if(t2 === null){
+      return t1
+    }else if (t1 === null){
+      return t2
+    }else{
+      t = new TreeNode(t1.val + t2.val)
+      t.left = mergeTrees(t1.left , t2.left)
+      t.right = mergeTrees(t1.right , t2.right)
+    }
+   return t
+    
+};
+	</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+/*两种情况 3个最大正数 or, 1个最大正数 & 2个最小负数*/
+var maximumProduct = function(nums) {
+	//排序
+	nums.sort( (a,b)=>a-b )
+	let max1, max2,
+		l = nums.length
+	max1 = nums[l-1]*nums[l-2]*nums[l-3]
+	max2 = nums[0]*nums[1]*nums[l-1]
+	debugger
+	return max1 > max2 ? max1 : max2
+};	
+let val = [1,2,3,4]
+maximumProduct(val)
+	</script>
+</html>

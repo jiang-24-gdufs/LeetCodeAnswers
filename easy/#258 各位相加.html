@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number} num
+ * @return {number}
+ */
+var addDigits = function(num) {
+//  if(num >= 10) {
+//  	let val = 0
+//  	num = num.toString().split('')
+//  	for(let v of num) {
+//  		debugger
+//  		val += parseInt(v)
+//  	}
+//  	addDigits(val)
+//  }else{
+//  	return num
+//  }
+	if(num < 10) return num
+  	let val = 0
+	num = num.toString().split('')
+	for(let v of num) {
+		debugger
+		val += parseInt(v)
+	}
+	return addDigits(val)
+};
+//数学推理解法
+//return 1 + (num - 1) % 9;
+addDigits(38)
+	</script>
+</html>

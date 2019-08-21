@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var arrangeCoins = function(n) {
+    // 生成一个 [0,1,3,6.....n*(n+1)/2] 其中大于值大于n就停止
+    let temp = []
+    for (let i = 0; i < 1000000; i++) {
+    	let v = i*(i + 1) / 2
+    	if (v <= n) {
+    		temp.push(v)
+    	} else{
+    		return temp.length - 1
+    		break
+    	}
+    }
+    console.log(temp)
+};	
+arrangeCoins(5)
+	</script>
+</html>

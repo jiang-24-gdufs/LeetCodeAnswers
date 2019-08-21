@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+	/**
+	 * @param {string} s
+	 * @return {number}
+	 */
+//	var lengthOfLastWord = function(s) {
+//		if(s[s.length - 1] === ' '){
+//	    	return s.slice(0,-1)
+//	    }
+//	    s = s.split(' ')
+//	    if(s.length !== 0) {
+//	    	//多个单词就拿到最后一个
+//	    	console.log(s.pop().length)
+//	    	debugger
+//	    	//return s.pop().length
+//	    }
+//	};
+var lengthOfLastWord = function(s) {
+    s = s.trim()
+    s = s.split(' ')
+    if(s.length !== 0) {
+        return s.pop().length
+    }
+};
+
+var lengthOfLastWordBest = function(s) {
+    const tail = x => x[x.length-1]
+    const str = s.split(' ')
+    // console.log(str)
+    while(tail(str) === '') str.pop()
+    if (str.length === 0) return 0
+    return tail(str).length
+};
+
+	let val = 'x '
+	ss = lengthOfLastWord(val)
+	console.log(ss)
+	</script>
+</html>

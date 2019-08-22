@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+<script type="text/javascript">
+/**
+ * @param {number} left
+ * @param {number} right
+ * @return {number[]}
+ */
+var selfDividingNumbers = function(left, right) {
+	const results = []
+    for(;left <= right; left ++) {
+    	//分解
+    	let divides = String(left).split('')
+    	let maps = divides.map((item) => left % item)
+    	let add = maps.reduce((f,s)=>f+s,0)
+    	if(add === 0) results.push(left)
+    }
+    return results
+};
+</script>
+</html>

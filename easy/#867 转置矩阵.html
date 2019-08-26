@@ -12,15 +12,15 @@
  * @return {number[][]}
  */
 var transpose = function(A) {
-    let M = A.length, i = 0, j = 0
-    for(; i < M; i++) {
-    	for(; j < M; j++) {
-    		if(i!==j) {
-    			console.log(1)
-    		}
+    let M = A.length, N = A[0].length, ans = []
+    for(let i = 0; i < N; i++) {
+    	ans[i] = []
+    	for(let j = 0; j < M; j++) {
+    		ans[i][j] = A[j][i]
     	}
     }
-    console.log(A)
+    console.log(ans)
+
 };	
 let val = [[1,2,3],[4,5,6],[7,8,9]]
 transpose(val)

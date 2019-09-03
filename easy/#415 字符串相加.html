@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+<script type="text/javascript">
+/**
+ * @param {string} num1
+ * @param {string} num2
+ * @return {string}
+ */
+var addStrings = function(num1, num2) {
+	let i = l1 = num1.length,
+		j = l2 = num2.length,
+		k = i > j ? i : j 
+		sums = Array(k + 1),
+		counter = 0
+	sums[0] = 0 //占位
+ 	for(;k > 0;i--,j--, k--) {
+ 		sums[k] = +(num1[i - 1] === undefined ? 0  : num1[i - 1]) + +(num2[j - 1] === undefined ? 0 : num2[j - 1])
+ 	}
+	for(k = sums.length; k >= 0; k--) {
+		if(sums[k] >= 10) {
+			sums[k] -= 10
+			sums[k - 1] += 1
+		}
+	}
+	debugger
+};
++"9333852702227987" +
++"85731737104263"
+addStrings("9333852702227987", "85731737104263")
+</script>
+</html>

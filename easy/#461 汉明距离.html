@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+<script type="text/javascript">
+/**
+ * @param {number} x
+ * @param {number} y
+ * @return {number}
+ */
+var hammingDistance = (x, y) =>(x ^ y).toString(2).split('').reduce((x,y)=>(+x)+(+y))
+var hammingDistance = function(x, y) {
+    let z = x ^ y;
+    let count = 0;
+    while (z > 0) {
+        if (z % 2 != 0) count++;
+        z = parseInt(z / 2);
+    }
+    return count;
+};
+</script>
+</html>

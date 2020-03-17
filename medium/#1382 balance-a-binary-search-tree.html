@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+ /**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+//拆分两次步骤
+//1. 将数组构造成一个二叉树, 取中间的值作为根节点
+//2. 遍历一个数构造一个数组
+//   2.1 二叉搜索树, 中序遍历生成一个递增的节点数组
+//
+// 执行时间:200+ms
+// 额外空间 50+M
+var balanceBST = function(root) {
+    const treeNodeArray = []
+
+    const dfs = root => {
+        if(!root) return
+        if(root.left) dfs(root.left)
+        treeNodeArray.push(root.val)
+        if(root.right) dfs(root.right)
+    }
+    const build = (l,r) => {
+        //递归终止条件
+        if(l>r) return null //必须return null 让LeetCode执行器识别, return undefined会报错 TypeError
+        const mid = (l+r)>>1
+        const treeNode = new TreeNode(treeNodeArray[mid])
+        //构建其左右子树
+        treeNode.left = build(l,mid-1)
+        treeNode.right = build(mid+1, r)
+        return treeNode
+    }
+    dfs(root)
+    return build(0,treeNodeArray.length - 1)
+}; 
+
+// optimized version: 根本没有优化号码
+var balanceBST = function(root) {
+    const treeNodeArray = []
+    let l = 0
+
+    const dfs = root => {
+        if(!root) return
+        if(root.left) dfs(root.left)
+        treeNodeArray[l++]=root.val
+        if(root.right) dfs(root.right)
+    }
+    const build = (l,r) => {
+        //递归终止条件
+        if(l>r) return null //必须return null 让LeetCode执行器识别, return undefined会报错 TypeError
+        const mid = (l+r)>>1
+        const treeNode = new TreeNode(treeNodeArray[mid])
+        //构建其左右子树
+        treeNode.left = build(l,mid-1)
+        treeNode.right = build(mid+1, r)
+        return treeNode
+    }
+    dfs(root)
+    return build(0,l-1)
+};
+    </script>
+</body>
+</html>

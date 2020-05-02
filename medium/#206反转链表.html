@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//1是题解， 2是剑指offer P143
+//题解: https://leetcode-cn.com/problems/reverse-linked-list/solution/fan-zhuan-dan-xiang-lian-biao-die-dai-fang-shi-by-/
+var reverseList = function(head) {
+    let preNode = head,
+        currNode = head.next,
+        tempNode = null
+
+    while(currNode) {
+        // h -> i -> j 
+        tempNode = currNode.next //缓存下一个节点
+        preNode.next = currNode.next
+        currNode.next = head
+
+        head = currNode
+        currNode = tempNode
+    }
+    return head
+};
+
+var reverseList = function(head) {
+    let prevNode = null,
+        nextNode = null
+        currNode = head,
+        reservedHead = null
+    
+    while(currNode !== null){
+        // h -> i -> j
+        nextNode = currNode.next    //cached
+        if(nextNode === null) {
+            reservedHead = currNode //获取遍历到最后的节点
+        }
+
+        currNode.next = prevNode;   // 关联前一个节点
+        prevNode = currNode         //switch pointer, move last node
+        currNode = nextNode
+
+    }
+    return reservedHead
+};
+
+//基于自己的理解来实现
+var reverseList = function(head) {
+    //缓存前一个节点保证正确指向
+    //缓存后一个节点保证链表不断
+    //交换指针后，以后前后节点的指针
+    //p => c => n => m
+    //x => p => c => n
+    let prevNode = null,
+        nextNode = null,
+        currNode = head,
+        ReservedHead = null
+    
+    while(currNode) {
+        nextNode = currNode.next
+
+        if(currNode.next === null) ReservedHead = currNode
+
+        //switch pointer
+        currNode.next = prevNode
+
+        //move pointer, 顺序不能变
+        prevNode = currNode
+        currNode = nextNode
+    }
+    return ReservedHead
+};
+let LN = {val: 1,next:{val:2, next: {val:3, next:null}}}
+reverseList(LN)
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/**
+ * @param {number[]} nums
+ * @return {number}
+执行结果：通过
+执行用时 :84 ms, 在所有 JavaScript 提交中击败了46.04%的用户
+内存消耗 :37.3 MB, 在所有 JavaScript 提交中击败了89.03%的用户
+ */
+
+var majorityElement = function(nums) {
+    //hash
+    const map = {};
+    let max = 0, maxKey = ''
+
+    nums.forEach(item=>{
+        const count = map[item] || 0
+        if(count) {
+            map[item] = count+1
+        }else{
+            map[item]=1
+        }
+        if(max <= count) {
+            max = count + 1
+            maxKey = item
+        }
+    })
+    return maxKey
+};
+//sort
+//思路是首尾指针, 判断指针差值
+var majorityElement = function(nums) {
+    const l=nums.length
+    nums.sort((a,b)=>a-b)
+    return nums[l>>1]
+}
+majorityElement( [2])
+majorityElement([3,2,3])
+majorityElement( [2,2,1,1,1,2,2])
+
+
+    </script>
+</body>
+</html>

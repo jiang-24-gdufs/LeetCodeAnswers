@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+//Definition for singly-linked list.
+function ListNode(val) {
+    this.val = val;
+    this.next = null;
+}
+var mergeTwoLists = function(l1, l2) {
+    //迭代, 逐个遍历往表中挂载节点
+    const dummyNode = new ListNode()
+    let addingNode = dummyNode
+    while(l1 && l2) {
+        if(l1.val < l2.val) {
+            addingNode.next = l1
+            l1 = l1.next
+        }else{
+            addingNode.next = l2
+            l2 = l2.next
+        }
+        addingNode = addingNode.next
+    }
+    //挂载剩余节点
+    addingNode.next = l1 ? l1 : l2
+    return dummyNode.next
+};   
+let LN = {val: 1,next:{val:3, next: {val:8, next:null}}}
+let LN2 = {val: 2,next:{val:12, next: {val:70, next:null}}}
+mergeTwoLists(LN,LN2)
+    </script>
+</body>
+</html>

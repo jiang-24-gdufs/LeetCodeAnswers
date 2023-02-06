@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/*
+ * @lc app=leetcode.cn id=914 lang=javascript
+ *
+ * [914] 卡牌分组
+ */
+
+// @lc code=start
+/**
+ * @param {number[]} deck
+ * @return {boolean}
+ */
+ var hasGroupsSizeX = function (deck) {
+  /* 
+因此我们只要求出所有数字数量最大公约数 g
+判断 g 是否大于等于 2 即可，如果大于等于 2，则满足条件，否则不满足。
+*/
+  // 拆解: 统计所有数字出现的次数 + 求次数的最大公约数
+  const gcd = (x, y) => {
+    return x == 0 ? y : gcd(y % x, x);
+  };
+
+  let counts = [];
+  deck.forEach(num=>{
+    if (counts[num]) {
+      counts[num]++
+
+    } else {
+      counts[num] =1
+    }
+  })
+  counts = counts.filter(Boolean);
+	if (counts.every(num=>num % 2 ===0)) return true;
+  let l=counts.length,result=counts[0];
+  for(let i=0; i<l-1;i++) {
+    result =gcd(counts[i],counts[i+1])
+  }
+
+  return result >= 2
+};
+// var hasGroupsSizeX = function(deck) {
+//     if(deck.length <= 1)
+//         return false
+//     const map = new Map(), a = []
+//     for(let i = 0; i<deck.length; i++){
+//         if(map.has(deck[i]))
+//             map.set(deck[i],map.get(deck[i])+1)
+//         else{
+//             map.set(deck[i],1)
+//             a.push(deck[i])
+//         }
+//     } 
+//     // a记录各不同元素出现的次数
+//     for(let i = 0; i<a.length; i++){
+//         a[i] = map.get(a[i])
+//     }
+//     // 最少次数
+//     let minTimes = a.reduce((p,v) =>  p < v ? p : v)
+//     // 最少出现2次
+//     if(minTimes < 2)
+//         return false
+//     // 从2~minTimes内是否有公约数
+//     for(let j = 2; j<=minTimes; j++){
+//         if(a.every(x => x%j===0))
+//             return true
+//     }
+//     return false 
+// };
+
+// @lc code=end
+debugger;
+deck = [1,1,2,2,2,3,3,3,3,3,3]
+hasGroupsSizeX(deck)
+	</script>
+</html>
